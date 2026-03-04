@@ -1,0 +1,39 @@
+{
+    "description": "Alt+D → Pending delete operator (500ms timeout)",
+    "manipulators": [
+        {
+            "from": {
+                "key_code": "c",
+                "modifiers": { "mandatory": ["option"] }
+            },
+            "parameters": { "basic.to_delayed_action_delay_milliseconds": 500 },
+            "to": [
+                {
+                    "set_variable": {
+                        "name": "alt_d_pending",
+                        "value": 1
+                    }
+                }
+            ],
+            "to_delayed_action": {
+                "to_if_canceled": [
+                    {
+                        "set_variable": {
+                            "name": "alt_d_pending",
+                            "value": 0
+                        }
+                    }
+                ],
+                "to_if_invoked": [
+                    {
+                        "set_variable": {
+                            "name": "alt_d_pending",
+                            "value": 0
+                        }
+                    }
+                ]
+            },
+            "type": "basic"
+        }
+    ]
+}
