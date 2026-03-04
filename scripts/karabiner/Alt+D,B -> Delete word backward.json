@@ -1,0 +1,32 @@
+{
+    "description": "Alt+D, B → Delete word backward",
+    "manipulators": [
+        {
+            "conditions": [
+                {
+                    "name": "alt_d_pending",
+                    "type": "variable_if",
+                    "value": 1
+                }
+            ],
+            "from": {
+                "key_code": "t",
+                "modifiers": { "optional": ["option"] }
+            },
+            "to": [
+                {
+                    "key_code": "left_arrow",
+                    "modifiers": ["left_option", "left_shift"]
+                },
+                { "key_code": "delete_forward" },
+                {
+                    "set_variable": {
+                        "name": "alt_d_pending",
+                        "value": 0
+                    }
+                }
+            ],
+            "type": "basic"
+        }
+    ]
+}
